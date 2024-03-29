@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/WelcomePage.css">
+    <title>SnapBlend</title>
+</head>
+<body>
+    <h1>Welcome To SnapBlend!</h1>
+    <h3>This is an app that lets you add photos and make a slideshow out of them!.</h3>
+    <div class="TextContent">
+        <p>
+            You need to create a free account and login with it to use the app. <br>
+            <br>
+            Use the links below to either sign up (if you dont already have an account) or sign in to an existing account.<br>
+            <br>
+            After logging in and going to the upload images section, you can drag and drop images onto the provided area to upload images to your database<br>
+            <br>
+            Then, to create a video, go to the "Create Video" section of the navbar to select photos from your database and make a viedeo out of them !! <br>
+        </p>
+    </div>
+    <div class="links">
+        <a href="/sign_in">Click Here to Log-In</a>
+        <a href="/sign_up">Click Here to Sign-Up</a> <br>
+        {% if uid %}
+        <p>
+            After signing in,  <br>
+        </p>
+        <a href="/up_load">Click Here to Upload Images</a><br>
+        {% endif %}
+        <p id="meow"></p>
+    </div>
+    <script>
+    </script>
+</body>
+</html>

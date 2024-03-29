@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slideshow App</title>
+    <style>
+        @keyframes fadeIn {
+    from{
+        opacity: 0%;
+    } 
+    to{
+        opacity: 100%
+    }
+}
+body {
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#login-container {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+#login-container h2 {
+    color: #419da7;
+    margin-bottom: 20px;
+}
+
+#login-container p {
+    color: #419da7;
+    margin-bottom: 20px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #419da7;
+}
+
+button {
+    background-color: #419da7;
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #35838c;
+}
+    
+    </style>>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Login to upload and save your photos.</h1>
+        {% if error %}
+        <p style="color:yellow; text-align: center">{{ error }}</p> 
+        {% endif %}
+        <form id="login-form" action="/sign_in" method="post">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" value="submit" placeholder="Submit Credentials">
+        </form>
+
+        <p>If you dont have an account, 
+        <a href="{{ url_for('signup') }}">Click here to sign up.</a></p>
+    </div>
+
+</body>
+</html>

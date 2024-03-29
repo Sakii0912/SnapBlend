@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/uploadImgstyles.css"> 
+</head>
+<body>
+    <nav>
+        <div class="upload"><a href="{{ url_for('upload') }}">Upload</a></div>
+        <a href="/create_video">Create Video</a>
+        {% if uid==1 %}
+        <a href="/admin">Admin Page</a>
+        {% endif %}
+        <a href="/loggedout">Logout</a>
+    </nav>
+    <div class="filelist">
+        <p class="file-list-heading">Images Added Till Now (Filenames):</p>
+        <ul id="fileList"></ul>
+        {% if success == "Files have been saved successfully!!" %}
+        <p class="success-message">{{ success }}</p>
+        {% else %}
+        <p class="error-message">{{ success }}</p>
+        {% endif %} <br>
+    </div>
+    <div id="container" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+        <p class="center">Drag and drop your files here</p>
+    </div>
+    <div class="button-container">
+        <button onclick="deletefiles()">Click Here to Delete Files One at a Time</button>
+        <form action="/up_load" method="post" onsubmit="submitimages(event)">
+            <input type="hidden" id="Formdata" name="Formdata">
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+    </div>
+    <br>
+    
+     
+    
+    <script>
+        var user_id = '{{ uid }}';
+    </script>
+    <script src="/static/js/UploadImage.js"></script>
+</body>
+</html>

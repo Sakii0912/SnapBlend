@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="/static/css/CreateVideoPage.css">
+</head>
+<body style="background-color: black;">
+    <nav>
+        <a href="/up_load">Upload</a>
+        <div class="upload"><a href="/create_video">Create-Video</a></div>
+        {% if uid == 1 %}
+        <a href="/admin">Admin Page</a>
+        {% endif %}
+        <a href="/loggedout">Logout</a>
+     </nav>
+     <br><br>
+     <h2 style="color: #419da7; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Image Gallery</h2>
+     <p style="text-align: center; color: white">(Click on the images to select them and click on them again to deselect)</p>
+     <section id="ImageGallery">
+     <div id="imageContainer">
+     </div>
+     </section>
+     <br><br>
+     <h2 style="color: #419da7; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Audio Gallery</h2>
+     <p style="text-align: center; color: white">(Click on the checkbox to select it and click again to deselect.)<br></p>
+     <section id="AudioGallery">
+
+     </section>
+     <br><br>
+     <!-- <form action="/create_video" method="post" onsubmit="ImageAndAudioSelection(event)">
+      <input type="hidden" id="Formdata" name="Formdata">
+      <input type="submit" value="Confirm Selections">
+      </form> -->
+      <p style="color: rgb(140, 2, 2); font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Ensure there is atleast 1 image and 1 audio track selected before proceeding!! (You will need to reload the app if one of either Images or Audio is not selected!)<br></p>
+    <button onclick="ImageAndAudioSelection(event)">Click Here To Confirm Your Selections!</button>
+     <br><br>
+     <h2 style="color: #419da7; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Video Preview</h2>
+     <p style="text-align: center; color: white">(This is the final video created. Click on the download button to download it!)</p>
+     <section class="video-preview" id="video-preview">
+        
+     </section><br>
+  <script>
+    var img_dict = JSON.parse('{{ images_info | tojson | safe }}');
+    var Uid = '{{ uid }}';
+    var audio_file = JSON.parse('{{ audio_in | tojson | safe }}');
+  </script>
+  <script src="/static/js/CreateVideoPage.js"></script>
+</body>
+</html>

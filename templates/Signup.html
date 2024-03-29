@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slideshow App</title>
+    <style>
+        @keyframes fadeIn {
+    from{
+        opacity: 0%;
+    } 
+    to{
+        opacity: 100%
+    }
+}
+body {
+    animation-duration: 3s;
+    animation-name: fadeIn;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#signin-container {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+#signin-container h2 {
+    color: #419da7;
+    margin-bottom: 20px;
+}
+
+#signin-container p {
+    color: #419da7;
+    margin-bottom: 20px;
+}
+
+#signin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #419da7;
+}
+
+button {
+    background-color: #419da7;
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #35838c;
+}
+    
+    </style>
+</head>
+<body>
+    <div id="signin-container">
+        <h2>Sign up using your email to create an account.</h1>
+            {% if error %}
+            <p style="color: yellow; text-align: center">{{ error }}</p>
+            {% endif %}
+        <form id="signup-form" action="/sign_up" method="post">
+            <input type="text" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="passcheck" placeholder="Password" required>
+            <input type="password" id="confirm_password" name="password" placeholder="Confirm Password" required>
+            <input type="submit" value="submit">
+        </form>
+
+        <p>
+        <a href="{{ url_for('signin') }}">Click here to go back to login page.</a></p>
+        <p id="StatusInfo"></p>
+    </div>
+</body>
+</html>
